@@ -63,10 +63,5 @@ Proje, kapsamlı bir well-being veri seti kullanmaktadır:
 - Demografik veriler
 - Teknolojik göstergeler
 
-## Lisans
 
-MIT License
 
-## İletişim
-
-[İletişim bilgileri] 
