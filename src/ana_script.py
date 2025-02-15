@@ -24,7 +24,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 def load_data():
     """Veri setini yükle ve önbellekle"""
     try:
-        df = pd.read_csv('cleaned_dataset.csv')
+        df = pd.read_csv('src/cleaned_dataset.csv')
         return df
     except Exception as e:
         st.error(f"Veri yüklenirken hata oluştu: {str(e)}")
