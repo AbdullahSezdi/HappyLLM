@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 3. .env dosyasını oluşturun:
 ```bash
-GOOGLE_API_KEY=your_api_key_here
+GOOGLE_API_KEY = "your-api-key-here"
 ```
 
 4. Uygulamayı çalıştırın:
