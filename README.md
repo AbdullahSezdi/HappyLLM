@@ -16,7 +16,7 @@ Mutluluk ve well-being analizleri için LLM destekli veri analiz platformu. Bu p
 
 1. Repoyu klonlayın:
 ```bash
-git clone (https://github.com/AbdullahSezdi/HappyLLM.git)]
+git clone (https://github.com/AbdullahSezdi/HappyLLM.git)
 ```
 
 2. Gerekli kütüphaneleri yükleyin:
