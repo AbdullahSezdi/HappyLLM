@@ -16,7 +16,7 @@ Mutluluk ve well-being analizleri için LLM destekli veri analiz platformu. Bu p
 
 1. Repoyu klonlayın:
 ```bash
-git clone [repo-url]
+git clone [repo-url](https://github.com/AbdullahSezdi/HappyLLM.git)]
 ```
 
 2. Gerekli kütüphaneleri yükleyin:
@@ -28,6 +28,8 @@ pip install -r requirements.txt
 ```bash
 GOOGLE_API_KEY = "your-api-key-here"
 ```
+https://aistudio.google.com/app/apikey
+
 
 4. Uygulamayı çalıştırın:
 ```bash
