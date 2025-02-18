@@ -2182,7 +2182,7 @@ def main():
                         with st.spinner("Yanıt hazırlanıyor..."):
                             from llm_agents import MultiAgentSystem
                             multi_agent = MultiAgentSystem(df)
-                            answer = asyncio.run(get_answer(question, df))
+                            answer = multi_agent.get_answer(question)
                             if answer:
                                 st.markdown("---")
                                 st.write(answer)

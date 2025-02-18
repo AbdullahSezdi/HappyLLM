@@ -1241,49 +1241,34 @@ Soru: {question}"""
             st.error(f"Yanıt işlenirken hata: {str(e)}")
             return None
 
-    async def get_answer(self, question: str) -> str:
-        """
-        Verilen soruyu uygun agent'a yönlendirir ve yanıt alır.
-        """
+    async def _async_get_answer(self, question: str) -> str:
         try:
-            # Soruyu uygun agent'a yönlendir
             agent_type = self.route_question(question)
-            st.info(f"Soru {agent_type} agent'ına yönlendirildi...")
+            agent = self.agents.get(agent_type)
             
-            # Soru tipine göre özel değişkenleri hazırla
-            kwargs = {
-                'question': question
-            }
+            if not agent:
+                return "Üzgünüm, bu soruyu yanıtlayamıyorum."
             
-            # Causal agent için ek değişkenler
-            if agent_type == AgentType.CAUSAL:
-                kwargs['variables'] = list(self.df.columns)
-            
-            # Data agent için ek değişkenler
-            elif agent_type == AgentType.DATA:
-                metric = self._determine_metric(question)
-                if metric:
-                    kwargs['metric'] = metric
-            
-            # LLM yanıtını al
             response = await self._get_llm_response(
-                self.agents[agent_type],
-                **kwargs
+                agent,
+                question=question,
+                agent_type=agent_type
             )
-            
-            # Yanıt kontrolü
-            if not response:
-                return ""
-            
-            # Yanıtı string'e çevir
-            if not isinstance(response, str):
-                response = str(response)
             
             return response
             
         except Exception as e:
-            st.error(f"Yanıt alınırken hata oluştu: {str(e)}")
-            return ""
+            return f"Bir hata oluştu: {str(e)}"
+
+    def get_answer(self, question: str) -> str:
+        """Senkron wrapper fonksiyon"""
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        try:
+            result = loop.run_until_complete(self._async_get_answer(question))
+            return result
+        finally:
+            loop.close()
 
     def _determine_metric(self, question: str) -> Optional[str]:
         """Sorudan metrik belirle"""

@@ -1,4 +1,4 @@
-# WellGPT
+# HappyLLM
 
 Mutluluk ve well-being analizleri için LLM destekli veri analiz platformu. Bu platform, ülkelerin mutluluk ve refah düzeylerini analiz eder, karşılaştırır ve içgörüler sunar.
 
